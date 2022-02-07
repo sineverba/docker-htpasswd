@@ -15,7 +15,8 @@ This will use bcrypt encryption.
 
 ## Github / image tags and versions
 
-| Github / Docker Image tag | Architectures |
-| ------------------------- | ------------- |
-| latest | linux/arm64/v8,linux/amd64,linux/arm/v6,linux/arm/v7 |
-| 1.0.0 | linux/arm64/v8,linux/amd64,linux/arm/v6,linux/arm/v7 |
+Architectures availables:
++ linux/arm64/v8
++ linux/amd64
++ linux/arm/v6
++ linux/arm/v7 |
