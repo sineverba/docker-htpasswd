@@ -10,7 +10,7 @@ multiple:
 	docker buildx ls
 	docker buildx create --name multiarch --driver docker-container --use
 	docker buildx inspect --bootstrap --builder multiarch
-	docker buildx build --platform linux/arm64/v8,linux/amd64,linux/arm/v6,linux/arm/v7 --tag sineverba/htpasswd:0.1.0 --push .
+	docker buildx build --platform linux/arm64/v8,linux/amd64,linux/arm/v6,linux/arm/v7 --tag sineverba/htpasswd:1.1.0 --push .
 
 test:
 	docker run --rm -ti sineverba/testdockerhtpasswd docker docker > htpasswd && cat htpasswd | grep "docker"
