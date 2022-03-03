@@ -5,7 +5,7 @@ Inspired from [https://github.com/xmartlabs/docker-htpasswd](https://github.com/
 
 Sick of googling to generate a `htpasswd`?
 
-`$ docker run --rm -ti sineverba/htpasswd <username> <password> > htpasswd`
+`$ docker run --rm -ti sineverba/htpasswd:1.1.0 <username> <password> > htpasswd`
 
 This will use bcrypt encryption.
 
@@ -19,4 +19,4 @@ Architectures availables:
 + linux/arm64/v8
 + linux/amd64
 + linux/arm/v6
-+ linux/arm/v7 |
++ linux/arm/v7
