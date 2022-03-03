@@ -8,6 +8,9 @@ agent:
 
 global_job_config:
 
+  secrets:
+    - name: ACCESS_TOKENS
+
   prologue:
     commands:
       - echo $DOCKER_TOKEN | docker login --username "$DOCKER_USERNAME" --password-stdin
@@ -29,11 +32,9 @@ blocks:
             - checkout
             - docker build --tag $DOCKER_USERNAME/$DOCKER_IMAGE .
             - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE docker docker > htpasswd && cat htpasswd | grep "docker"
-      secrets:
-        - name: DOCKER_TOKEN
 
 promotions:
   - name: Deploy
-    pipeline_file: deploy.yml
+    pipeline_file: production-deploy.yml
     auto_promote:
       when: "result = 'passed' and tag =~ '.*'"

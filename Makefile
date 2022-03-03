@@ -1,5 +1,9 @@
+IMAGE_NAME=sineverba/testdockerhtpasswd
+CONTAINER_NAME=testdockerhtpasswd
+
+
 build:
-	docker build --tag sineverba/testdockerhtpasswd .
+	docker build --tag $(IMAGE_NAME) .
 
 multiple:
 	mkdir -vp ~/.docker/cli-plugins/
@@ -13,7 +17,7 @@ multiple:
 	docker buildx build --platform linux/arm64/v8,linux/amd64,linux/arm/v6,linux/arm/v7 --tag sineverba/htpasswd:1.1.0 --push .
 
 test:
-	docker run --rm -ti sineverba/testdockerhtpasswd docker docker > htpasswd && cat htpasswd | grep "docker"
+	docker run --rm -ti $(IMAGE_NAME) docker docker > htpasswd && cat htpasswd | grep "docker"
 
 destroy:
-	docker image rm sineverba/testdockerhtpasswd
+	docker image rm $(IMAGE_NAME)
