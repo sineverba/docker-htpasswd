@@ -1,4 +1,4 @@
-FROM alpine:3.15.0
+FROM alpine:3.17.1
 RUN apk update && \
     apk add --upgrade apk-tools && \
     apk upgrade --available && \
