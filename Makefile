@@ -1,6 +1,6 @@
 IMAGE_NAME=sineverba/htpasswd
 CONTAINER_NAME=htpasswd
-APP_VERSION=1.1.0-dev
+APP_VERSION=1.2.0-dev
 BUILDX_VERSION=0.9.1
 BINFMT_VERSION=qemu-v7.0.0-28
 
