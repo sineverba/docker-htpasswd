@@ -13,9 +13,8 @@ This will use bcrypt encryption.
 | --------- | --------- |
 | Semaphore CI | [![Build Status](https://sineverba.semaphoreci.com/badges/docker-htpasswd/branches/master.svg)](https://sineverba.semaphoreci.com/projects/docker-htpasswd) |
 
-## Github / image tags and versions
+## Availables architectures
 
-Architectures availables:
 + linux/arm64/v8
 + linux/amd64
 + linux/arm/v6
