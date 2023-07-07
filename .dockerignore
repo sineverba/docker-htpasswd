@@ -1,8 +1,5 @@
 .semaphore/
-CHANGELOG.md
-CODE_OF_CONDUCT.md
-CONTRIBUTING.md
 htpasswd
 LICENSE
 Makefile
-README.md
+*.md
