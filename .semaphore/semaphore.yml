@@ -31,7 +31,7 @@ blocks:
           commands:
             - checkout
             - docker build --tag $DOCKER_USERNAME/$DOCKER_IMAGE .
-            - docker run --rm -it --entrypoint cat $DOCKER_USERNAME/$DOCKER_IMAGE /etc/os-release | grep "3.17.1"
+            - docker run --rm -it --entrypoint cat $DOCKER_USERNAME/$DOCKER_IMAGE /etc/os-release | grep "3.18.2"
             - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE docker docker > htpasswd && cat htpasswd | grep "docker"
 
 promotions:
