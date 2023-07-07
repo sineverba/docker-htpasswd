@@ -21,7 +21,7 @@ global_job_config:
     - name: DOCKER_USERNAME
       value: sineverba
     - name: DOCKER_IMAGE
-      value: ansible
+      value: htpasswd
     - name: BUILDX_VERSION
       value: 0.11.1
     - name: BINFMT_VERSION
