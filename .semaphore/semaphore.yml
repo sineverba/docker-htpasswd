@@ -20,6 +20,8 @@ global_job_config:
       value: sineverba
     - name: DOCKER_IMAGE
       value: htpasswd
+    - name: ALPINE_VERSION
+      value: 3.18.4
 
 blocks:
   - name: 'Build and test'
@@ -30,8 +32,12 @@ blocks:
         - name: 'Build and test'
           commands:
             - checkout
-            - docker build --tag $DOCKER_USERNAME/$DOCKER_IMAGE .
-            - docker run --rm -it --entrypoint cat $DOCKER_USERNAME/$DOCKER_IMAGE /etc/os-release | grep "3.18.2"
+            - >-
+              docker build 
+              --build-arg ALPINE_VERSION=$ALPINE_VERSION 
+              --tag $DOCKER_USERNAME/$DOCKER_IMAGE 
+              "."
+            - docker run --rm -it --entrypoint cat $DOCKER_USERNAME/$DOCKER_IMAGE /etc/os-release | grep $ALPINE_VERSION
             - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE docker docker > htpasswd && cat htpasswd | grep "docker"
 
 promotions:
