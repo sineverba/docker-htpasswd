@@ -1,11 +1,25 @@
 IMAGE_NAME=sineverba/htpasswd
 CONTAINER_NAME=htpasswd
-APP_VERSION=1.3.0-dev
+APP_VERSION=1.4.0-dev
+ALPINE_VERSION=3.18.4
 BUILDX_VERSION=0.11.1
 BINFMT_VERSION=qemu-v7.0.0-28
 
 build:
-	docker build --tag $(IMAGE_NAME):$(APP_VERSION) "."
+	docker build \
+		--no-cache \
+		--build-arg ALPINE_VERSION=$(ALPINE_VERSION) \
+		--build-arg SQLITE_VERSION=$(SQLITE_VERSION) \
+		--tag $(IMAGE_NAME):$(APP_VERSION) \
+		"."
+
+inspect:
+	docker run \
+		--rm \
+		-it \
+		--entrypoint /bin/sh \
+		--name $(CONTAINER_NAME) \
+		$(IMAGE_NAME):$(APP_VERSION)
 
 preparemulti:
 	mkdir -vp ~/.docker/cli-plugins
@@ -28,10 +42,10 @@ multi:
 		--tag $(IMAGE_NAME):$(APP_VERSION) "."
 
 test:
-	docker run --rm -it --entrypoint cat $(IMAGE_NAME):$(APP_VERSION) /etc/os-release | grep "3.18.2"
+	docker run --rm -it --entrypoint cat $(IMAGE_NAME):$(APP_VERSION) /etc/os-release | grep $(ALPINE_VERSION)
 	docker run --rm -ti $(IMAGE_NAME):$(APP_VERSION) docker docker > htpasswd && cat htpasswd | grep "docker"
 	rm htpasswd
 
 destroy:
-	docker image rm alpine:3.18.2
+	-docker image rm alpine:$(ALPINE_VERSION)
 	docker image rm $(IMAGE_NAME):$(APP_VERSION)

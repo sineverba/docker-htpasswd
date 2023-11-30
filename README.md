@@ -5,7 +5,7 @@ Inspired from [https://github.com/xmartlabs/docker-htpasswd](https://github.com/
 
 Sick of googling to generate a `htpasswd`?
 
-`$ docker run --rm -ti sineverba/htpasswd:1.3.0 <username> <password> > htpasswd`
+`$ docker run --rm -ti sineverba/htpasswd:1.4.0 <username> <password> > htpasswd`
 
 This will use bcrypt encryption.
 
