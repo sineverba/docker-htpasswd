@@ -1,8 +1,8 @@
 IMAGE_NAME=sineverba/htpasswd
 CONTAINER_NAME=htpasswd
-APP_VERSION=1.4.0-dev
-ALPINE_VERSION=3.18.4
-BUILDX_VERSION=0.11.1
+APP_VERSION=1.5.0-dev
+ALPINE_VERSION=3.19.0
+BUILDX_VERSION=0.12.1
 BINFMT_VERSION=qemu-v7.0.0-28
 
 build:
@@ -34,9 +34,9 @@ preparemulti:
 	docker buildx ls
 	docker buildx rm multiarch
 	docker buildx create --name multiarch --driver docker-container --use
-	
-multi:
 	docker buildx inspect --bootstrap --builder multiarch
+	
+multi: preparemulti
 	docker buildx build \
 		--platform linux/arm64/v8,linux/amd64,linux/arm/v6,linux/arm/v7 \
 		--tag $(IMAGE_NAME):$(APP_VERSION) "."

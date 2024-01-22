@@ -21,7 +21,7 @@ global_job_config:
     - name: DOCKER_IMAGE
       value: htpasswd
     - name: ALPINE_VERSION
-      value: 3.18.4
+      value: 3.19.0
 
 blocks:
   - name: 'Build and test'
